@@ -14,7 +14,7 @@ turns guessing locations on their opponent's board to fire. Their opponent annou
 whether the shot hits or misses their ship and if it is the final hit on their ship,
 the fact that that shot destroyed their ship. 
 
-You can play a **version** of BattleShip here and I recommend that you do so if you 
+You can play a [**version** of BattleShip here](https://www.battleshiponline.org) and I recommend that you do so if you 
 haven’t played the game before.
 
 ## Requirements
