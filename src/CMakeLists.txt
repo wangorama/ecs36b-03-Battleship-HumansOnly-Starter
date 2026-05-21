@@ -11,6 +11,8 @@ add_library(${SRC_LIB_NAME} STATIC
         Board.h
         Player.cpp
         Player.h
+        BoardCell.cpp
+        BoardCell.h
 
 )
 

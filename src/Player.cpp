@@ -3,3 +3,9 @@
 //
 
 #include "Player.h"
+
+namespace Battleship {
+    Player::Player()
+
+
+}
