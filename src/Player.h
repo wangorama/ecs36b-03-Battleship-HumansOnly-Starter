@@ -7,18 +7,30 @@
 
 #include <vector>
 #include <memory>
+#include <iostream>
+#include "Board.h"
 
 namespace BattleShip {
-    using PlayerVector = std::vector<std::unique_ptr<Player>>; // we use a unique pointer to represent a player
-    using ShipVector = std::vector<std::pair<char, int>>; //this is to mark the name of the ship(s)
 
     class Player {
         public:
-            virtual void ObtainConfiguration(int &row, int &col, int &ship) const; //rows, columns and ships thatll be there
-            virtual void Attack(int& row, int& col) const; //why do i need to get the configuration form a player
-            virtual void PlaceShip(int& row, int& col);
+        Player(std::string name, int row, int col, std::vector<std::pair<char, int>> shipTypes);
+        virtual ~Player();
+        virtual void placeShips() = 0;
 
-        private:
+        //getter
+        [[nodiscard]] Board& getBoard(); //for player attacking the opponent
+
+        [[nodiscard]] const Board& getBoard() const; //to view the boards results after being attacked
+
+        [[nodiscard]] const std::string& getName() const;
+
+        virtual std::pair<int, int> attack() = 0; //part of the game loop, where they attack
+
+
+    private:
+        std::string player_name_;
+        Board board_;
 
     };
 }

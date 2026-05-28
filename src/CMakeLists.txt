@@ -5,14 +5,14 @@ project(ECS36BBattleShipHumansOnlySrc) # make sure to update
 add_library(${SRC_LIB_NAME} STATIC
         Game.cpp
         Game.h
-        Ship.cpp
-        Ship.h
         Board.cpp
         Board.h
         Player.cpp
         Player.h
         BoardCell.cpp
         BoardCell.h
+        Ship.cpp
+        Ship.h
 
 )
 

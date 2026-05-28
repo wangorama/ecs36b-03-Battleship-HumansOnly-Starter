@@ -5,32 +5,32 @@
 #ifndef ECS36BBATTLESHIPHUMANSONLY_BOARDCELL_H
 #define ECS36BBATTLESHIPHUMANSONLY_BOARDCELL_H
 #include <optional>
+#include <vector>
+
+#include "Ship.h"
 
 namespace BattleShip {
-    /* This represents each individual statistics of each board cell */
+    /* This represents each individual statistics of each board cell
+     * I like to think of this just as a mailbox itself, and Board is the houses
+     * storing the mailbox
+     */
+
     class BoardCell {
     public:
         BoardCell();
 
-        //these need the [[nodiscard]] because there is a dedicated purpose, and only one purpose of the functoin
-        //returning the specified value. otherwise, the side effects of it just staying, instead of a compiler
-        //writing errors over the function not being used, can cause unknown gmae bugs like misfirings
+        //getters
+        [[nodiscard]] bool contains_ship() const;
+        [[nodiscard]] bool has_been_attacked() const;
+        [[nodiscard]] char get_ship_symbol() const;
 
-        [[nodiscard]] bool square_attacked() const; //marks to see if the square was hit or not
-
-        [[nodiscard]] bool ship_component_occupies() const; //occupes a ship
-
-        [[nodiscard]] std::optional<char> ship() const;
-
-        //these are fine without the nodiscards because
-
-        void set_square_attacked();
-
-        void add_ship(char ship);
+        //setters
+        void add_ship(char ship); //action of adding a ship to make it contain a ship
+        void mark_as_attacked();
 
     private:
-        std::optional<char> ship_component;
-        bool square_attacked_;
+        bool has_been_attacked_;
+        std::optional<char> ship_;
 
     };
 }

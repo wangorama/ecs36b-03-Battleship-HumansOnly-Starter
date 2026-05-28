@@ -5,4 +5,8 @@
 #include "Game.h"
 
 namespace BattleShip {
+    Game(const std::string& configFile);
+
+    void play();
+
 } // BattleShip
