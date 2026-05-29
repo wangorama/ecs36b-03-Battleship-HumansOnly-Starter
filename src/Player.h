@@ -8,14 +8,19 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include <algorithm>
+#include <ranges>
 #include "Board.h"
+#include <map>
 
 namespace BattleShip {
 
     class Player {
         public:
-        Player(std::string name, int row, int col, std::vector<std::pair<char, int>> shipTypes);
-        virtual ~Player();
+        Player(std::istream& in, std::ostream& out, std::string name, int row, int col, std::map<char, int> shipTypes);
+
+        virtual ~Player() = default;
+
         virtual void placeShips() = 0;
 
         //getter
@@ -25,12 +30,15 @@ namespace BattleShip {
 
         [[nodiscard]] const std::string& getName() const;
 
+        //setter
         virtual std::pair<int, int> attack() = 0; //part of the game loop, where they attack
+        void set_opponent(Player& opponent);
 
 
     private:
         std::string player_name_;
         Board board_;
+        Player* opponent_;
 
     };
 }

@@ -12,6 +12,8 @@ class Ship {
     Ship(char symbol, int size);
     void takeHit();
     bool isSunk() const;
+    int getSize() const;
+    char getSymbol() const;
 
 private:
     char symbol_;

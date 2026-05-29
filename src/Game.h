@@ -5,6 +5,7 @@
 #ifndef ECS36BBATTLESHIPHUMANSONLY_GAME_H
 #define ECS36BBATTLESHIPHUMANSONLY_GAME_H
 #include <memory>
+
 #include "Player.h"
 
 namespace BattleShip {

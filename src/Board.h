@@ -24,7 +24,7 @@ namespace BattleShip {
             void display(std::ostream& out) const; //for your board, where you get to see your ships
             void displayHidden(std::ostream& out) const; //for seeing your opponents board
 
-            bool placeShip(const int row, const int col, const std::string& orientation, const Ship& ship);
+            bool placeShip(const int start_row, const int start_col, int end_row, int end_col, const std::string& orientation, const Ship& ship);
             Attack_Result receiveShot(const int row, const int col);
             bool allShipsSunk() const;
 
