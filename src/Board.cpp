@@ -84,7 +84,6 @@ namespace BattleShip {
 
     bool Board::placeShip(const int start_row, const int start_col, int end_row, int end_col, const std::string& orientation, const Ship& ship) {
 
-
         if (orientation == "h") {
             end_col = start_col + ship.getSize() - 1;
             if (end_col > num_cols_ - 1 || start_col < 0) return false;
@@ -107,10 +106,23 @@ namespace BattleShip {
         return true;
     }
 
+    char Board::getShipSymbol(int row, int col) const {
+        return grid_[row][col].get_ship_symbol();
+    }
+
+    bool Board::isOnBoard(int row, int col) const {
+        return row >= 0 && row < num_rows_ && col >= 0 && col < num_cols_;
+    }
+
+    bool Board::hasBeenAttacked(int row, int col) const {
+        return grid_[row][col].has_been_attacked();
+    }
+
     Board::Attack_Result Board::receiveShot(const int row, const int col) {
-        char symbol = grid_[row][col].get_ship_symbol();
         grid_[row][col].mark_as_attacked();
+
         if (grid_[row][col].contains_ship()) {
+            char symbol = grid_[row][col].get_ship_symbol();
             for (auto& ship : ships_) {
                 if (ship.getSymbol() == symbol) {
                     ship.takeHit();
@@ -118,7 +130,7 @@ namespace BattleShip {
                     return Attack_Result::Hit;
                 }
             }
-        } 
+        }
 
         return Attack_Result::Miss;
     }

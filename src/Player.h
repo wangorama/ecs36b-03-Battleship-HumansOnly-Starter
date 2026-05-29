@@ -17,11 +17,9 @@ namespace BattleShip {
 
     class Player {
         public:
-        Player(std::istream& in, std::ostream& out, std::string name, int row, int col, std::map<char, int> shipTypes);
+        Player(std::istream& in, std::ostream& out, std::string name, int row, int col);
 
         virtual ~Player() = default;
-
-        virtual void placeShips() = 0;
 
         //getter
         [[nodiscard]] Board& getBoard(); //for player attacking the opponent
@@ -30,15 +28,21 @@ namespace BattleShip {
 
         [[nodiscard]] const std::string& getName() const;
 
-        //setter
-        virtual std::pair<int, int> attack() = 0; //part of the game loop, where they attack
+
         void set_opponent(Player& opponent);
+
+        //player action
+        virtual std::pair<int, int> attack(); //part of the game loop, where they attack
+
+        virtual void placeShips(const std::vector<std::pair<char, int>>& ships);
 
 
     private:
         std::string player_name_;
         Board board_;
         Player* opponent_;
+        std::istream& in_;
+        std::ostream& out_;
 
     };
 }

@@ -4,8 +4,6 @@
 
 #include "Ship.h"
 
-#include <ranges>
-
 
 namespace BattleShip {
     Ship::Ship(char symbol, int size): symbol_(symbol), size_(size), hits_(0) {
