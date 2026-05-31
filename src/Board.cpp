@@ -24,7 +24,7 @@ namespace BattleShip {
 
         for (int row = 0; row < num_rows_; row++) {
 
-            out << row + 1 << ' ';  // print row number
+            out << row << ' ';  // print row number
 
             for (int col = 0; col < num_cols_; col++) {
 
@@ -54,7 +54,7 @@ namespace BattleShip {
 
         out << ' ';
         for (int col = 0; col < num_cols_; col++) {
-            out << col + 1 << ' ';
+            out << col << ' ';
         }
         out << '\n';
 

@@ -36,6 +36,11 @@ namespace BattleShip {
             out_ << player_name_ << ", where would you like to fire?\n";
             out_ << "Enter your attack coordinate in the form row col: ";
             in_ >> row >> col;
+            if (!(in_ >> row >> col)) {
+                std::cin.ignore();
+                std::cin.clear();
+                continue;
+            }
             if (!opponent_->getBoard().isOnBoard(row, col)) continue;
             if (opponent_->getBoard().hasBeenAttacked(row, col)) continue;
             return {row, col};
@@ -60,6 +65,11 @@ namespace BattleShip {
                 }
                 out_ << player_name_ << ", enter the row and column you want to place " << pair.first << ", which is " << pair.second << " long, at with a space in between row and col: ";
                 in_ >> row >> col;
+                if (!(in_ >> row >> col)) {
+                    std::cin.ignore();
+                    std::cin.clear();
+                    continue;
+                }
                 Ship ship(pair.first, pair.second);
                 bool result = board_.placeShip(row, col, 0, 0, orientation, ship);
                 if (result) break;

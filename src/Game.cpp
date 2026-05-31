@@ -22,12 +22,10 @@ namespace BattleShip {
     void Game::setUp() {
         std::cout << "Player 1 please enter your name: ";
         std::string name1;
-        std::cin.ignore();
         std::getline(std::cin, name1);
         player1 = std::make_unique<Player>(std::cin, std::cout, name1, num_rows_, num_cols_);
         std::cout << "Player 2 please enter your name: ";
         std::string name2;
-        std::cin.ignore();
         std::getline(std::cin, name2);
         player2 = std::make_unique<Player>(std::cin, std::cout, name2, num_rows_, num_cols_);
         player1->set_opponent(*player2);
